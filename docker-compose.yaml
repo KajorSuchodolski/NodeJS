@@ -1,0 +1,25 @@
+version: "3.1"
+
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    build: ./mongo/mongodb
+    volumes:
+      - ./mongo/mongodb/data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: user
+      MONGO_INITDB_ROOT_PASSWORD: admin1
+
+  mongo-express:
+    container_name: mongo-express
+    image: mongo-express:latest
+    ports:
+      - "12000:8081"
+    environment:
+      ME_CONFIG_OPTIONS_EDITORTHEME: ayu-mirage
+      ME_CONFIG_MONGODB_ADMINUSERNAME: user
+      ME_CONFIG_MONGODB_ADMINPASSWORD: admin1
+      ME_CONFIG_MONGODB_SERVER: mongodb

@@ -7,7 +7,11 @@ let array = [];
 app.use(express.json());
 
 app.get("/", (req, res, next) => {
-  res.send(`Hello my ${array}`);
+  res.send(`Hello my friend`);
+});
+
+app.get("/array", (req, res, next) => {
+  res.send(`<h1>${array}</h1>`)
 });
 
 app.post("/add", (req, res) => {
